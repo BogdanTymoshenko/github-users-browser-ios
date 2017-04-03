@@ -11,14 +11,16 @@ import RxSwift
 import RxCocoa
 import AlamofireImage
 import MBProgressHUD
+import DZNEmptyDataSet
 
-class UserSearchController: UITableViewController, UserSearchView {
+class UserSearchController: UITableViewController, UserSearchView, DZNEmptyDataSetSource {
     @IBOutlet weak var searchBarView: UISearchBar!
     
     var presenter:UserSearchPresenter!
     var users = [UserShort]()
     var loadingView:MBProgressHUD? = nil
-
+    var isFirstUsersUpdate = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = UserSearchPresenter(view: self, cp:UIApplication.componentProvider)
@@ -71,6 +73,22 @@ class UserSearchController: UITableViewController, UserSearchView {
     }
     
     //
+    // MARK: DZNEmptyDataSetSource
+    //
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let titleKey = isFirstUsersUpdate ? "user_search__label__search_hint" : "user_search__label__nothing_found"
+        let title = NSMutableAttributedString(string: NSLocalizedString(titleKey, comment: ""))
+        let attributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightMedium),
+                          NSForegroundColorAttributeName: UIColor.black]
+        title.addAttributes(attributes, range: NSRange(location: 0, length: title.length))
+        return title
+    }
+    
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return #imageLiteral(resourceName: "img_octocat")
+    }
+    
+    //
     // MARK: SearchView
     //
     var queryTextChangeEvents: Observable<SearchQueryEvent> {
@@ -80,6 +98,7 @@ class UserSearchController: UITableViewController, UserSearchView {
     }
     
     func showUsers(users: [UserShort]) {
+        isFirstUsersUpdate = false
         self.users.removeAll()
         self.users.append(contentsOf: users)
         tableView.reloadData()

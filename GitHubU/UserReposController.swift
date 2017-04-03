@@ -9,14 +9,16 @@
 import UIKit
 import RxSwift
 import MBProgressHUD
+import DZNEmptyDataSet
 
-class UserReposController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UserReposView {
+class UserReposController: UICollectionViewController, UICollectionViewDelegateFlowLayout, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, UserReposView {
     
     var userLogin:String!
     var presenter:UserReposPresenter!
     var user:UserView? = nil
     var repos = [Repo]()
     var loadingView:MBProgressHUD? = nil
+    var isFirstReposUpdate = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,13 +88,40 @@ class UserReposController: UICollectionViewController, UICollectionViewDelegateF
     // MARK: UICollectionViewDelegateFlowLayout
     //
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 240)
+        return CGSize(width: collectionView.bounds.width, height: 180)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let repo = repos[indexPath.row]
         return UserRepoViewCell.computeContentSize(collectionViewBounds: collectionView.bounds, repo: repo)
     }
+    
+    //
+    // MARK: DZNEmptyDataSetSource
+    //
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let title = NSMutableAttributedString(string: NSLocalizedString("user_repos__label__no_repos", comment: ""))
+        let attributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 16, weight: UIFontWeightMedium),
+                          NSForegroundColorAttributeName: UIColor.black]
+        title.addAttributes(attributes, range: NSRange(location: 0, length: title.length))
+        return title
+    }
+    
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return #imageLiteral(resourceName: "img_octocat")
+    }
+    
+    func backgroundColor(forEmptyDataSet scrollView: UIScrollView!) -> UIColor! {
+        return UIColor.white
+    }
+    
+    //
+    // MARK: DZNEmptyDataSetDelegate
+    //
+    func emptyDataSetShouldDisplay(_ scrollView: UIScrollView!) -> Bool {
+        return !isFirstReposUpdate
+    }
+
     
     //
     // MARK: UserReposView
@@ -103,6 +132,7 @@ class UserReposController: UICollectionViewController, UICollectionViewDelegateF
     }
     
     func showRepos(repos:[Repo]) {
+        isFirstReposUpdate = false
         self.repos.removeAll()
         self.repos.append(contentsOf: repos)
         collectionView?.reloadData()

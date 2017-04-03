@@ -17,3 +17,7 @@
 "common__error__unexpected" = "Unexpected error";
 
 "user_search__title" = "GitHub Users";
+"user_search__label__search_hint" = "To find user on GitHub start typing username, login or email in search field";
+"user_search__label__nothing_found" = "No user found";
+
+"user_repos__label__no_repos" = "User has no repositories";
