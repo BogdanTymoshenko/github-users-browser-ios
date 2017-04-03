@@ -7,40 +7,60 @@
 //
 
 import UIKit
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var apiFactory:ApiFactory!
+    var componentProvider:ComponentProvider!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        apiFactory = ApiFactoryImpl()
+        componentProvider = ComponentProviderImpl(apiFactory:apiFactory)
         return true
     }
-
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
-
 }
 
+class ApiFactoryImpl: ApiFactory {
+    var searchApi: SearchApi
+    var usersApi: UsersApi
+    var reposApi: ReposApi
+    
+    init() {
+        let manager = SessionManager.default
+        let client = RestApiClient(baseApiUrl: URL(string:"https://api.github.com/")!, manager: manager)
+        
+        let login = "amicablesoft-test"
+        let token = "46f2d64584bb5c36676ef19ed83f2960d61b00ba"
+        
+        client.addApiRequestInterceptor { request in
+            if let basicAuth = Request.authorizationHeader(user: login, password: token) {
+                request.setValue(basicAuth.value, forHTTPHeaderField: basicAuth.key)
+            }
+            
+            return nil
+        }
+        
+        searchApi = SearchApiImpl(client: client)
+        usersApi = UsersApiImpl(client: client)
+        reposApi = ReposApiImpl(client: client)
+    }
+}
+
+class ComponentProviderImpl: ComponentProvider {
+    var usersRepository: UsersRepository
+    
+    init(apiFactory:ApiFactory) {
+        usersRepository = UsersRepositoryImpl(apiFactory: apiFactory)
+    }
+}
+
+extension UIApplication {
+    static var componentProvider:ComponentProvider {
+        let app = UIApplication.shared
+        return (app.delegate as! AppDelegate).componentProvider
+    }
+}

@@ -9,7 +9,6 @@ target 'GitHubU' do
     # RxSwift
     pod 'RxSwift', '~> 3.2.0'
     pod 'RxCocoa', '~> 3.2.0'
-    #pod 'RxAlamofire', '~> 3.0.2'
 
     # Json
     pod 'SwiftyJSON', '~> 3.1.4'

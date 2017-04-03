@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  GitHubU
+
+  Created by BogdanTymoshenko on 4/3/17.
+  Copyright © 2017 AmicableSoft. All rights reserved.
+*/
+
+"common__label__loading" = "Loading";
+
+"common__title__error" = "Oops!";
+"common__error__button__okey" = "OK";
+
+"common__error__connection_problem" = "Missing network connection. Check connection and try again.";
+"common__error__limit_exceeded__try_later" = "Requests limit exceeded, try again later";
+"common__error__limit_exceeded__try_after" = "Requests limit exceeded, try again after %@";
+"common__error__unexpected" = "Unexpected error";
