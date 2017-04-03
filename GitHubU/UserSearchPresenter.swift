@@ -11,6 +11,7 @@ import RxSwift
 class UserSearchPresenter {
     let view:UserSearchView
     let repository:UsersRepository
+    let mainScheduler:SchedulerType
     var lastQuery:String = ""
     var loadedUsers = [UserShort]()
     
@@ -19,6 +20,7 @@ class UserSearchPresenter {
     init(view:UserSearchView, cp:ComponentProvider) {
         self.view = view
         self.repository = cp.usersRepository
+        self.mainScheduler = cp.mainScheduler
     }
     
     func viewWillAppear() {
@@ -29,7 +31,7 @@ class UserSearchPresenter {
             .filter { query in
                 !query.isEmpty
             }
-            .debounce(1.250, scheduler: MainScheduler.instance)
+            .debounce(1.250, scheduler: mainScheduler)
             .filter { query in
                 query != self.lastQuery
             }

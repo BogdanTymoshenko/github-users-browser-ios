@@ -11,7 +11,7 @@
 		4387EAE61E9222F800A9D6B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4387EAE41E9222F800A9D6B5 /* Main.storyboard */; };
 		4387EAE81E9222F800A9D6B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4387EAE71E9222F800A9D6B5 /* Assets.xcassets */; };
 		4387EAEB1E9222F800A9D6B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4387EAE91E9222F800A9D6B5 /* LaunchScreen.storyboard */; };
-		4387EAF61E9222F800A9D6B5 /* GitHubUTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387EAF51E9222F800A9D6B5 /* GitHubUTests.swift */; };
+		4387EAF61E9222F800A9D6B5 /* UserSearchPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387EAF51E9222F800A9D6B5 /* UserSearchPresenterTest.swift */; };
 		4387EB011E9222F800A9D6B5 /* GitHubUUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387EB001E9222F800A9D6B5 /* GitHubUUITests.swift */; };
 		4387EB111E922AE800A9D6B5 /* UserSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387EB101E922AE800A9D6B5 /* UserSearchController.swift */; };
 		4387EB151E922D3D00A9D6B5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4387EB141E922D3D00A9D6B5 /* User.swift */; };
@@ -48,6 +48,11 @@
 		43B56D6C1E92A6AD00EF68B1 /* UserReposView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B56D6B1E92A6AD00EF68B1 /* UserReposView.swift */; };
 		43B56D6E1E92A6B700EF68B1 /* UserReposPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B56D6D1E92A6B700EF68B1 /* UserReposPresenter.swift */; };
 		43B56D701E92A6F500EF68B1 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B56D6F1E92A6F500EF68B1 /* UserView.swift */; };
+		43B56D731E92BE0700EF68B1 /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B56D721E92BE0700EF68B1 /* GeneratedMocks.swift */; };
+		43B56D751E92BE1D00EF68B1 /* UsersRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B56D741E92BE1D00EF68B1 /* UsersRepositoryImpl.swift */; };
+		43B56D771E92D8CD00EF68B1 /* AdditionalParameterMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B56D761E92D8CD00EF68B1 /* AdditionalParameterMatcher.swift */; };
+		43B56D791E92D92900EF68B1 /* UserReposPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B56D781E92D92900EF68B1 /* UserReposPresenterTest.swift */; };
+		43B56D7B1E92D96B00EF68B1 /* ReposRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B56D7A1E92D96B00EF68B1 /* ReposRepositoryImpl.swift */; };
 		5E8E96DBA0771851D80A5318 /* Pods_GitHubU_GitHubUTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EF7DDC87445A2945E389D8 /* Pods_GitHubU_GitHubUTests.framework */; };
 		7104D77DA050647CB46E10BF /* Pods_GitHubUUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D505DA4033D7DE6601BD8A4A /* Pods_GitHubUUITests.framework */; };
 		9DDD4343FE46B6D12A44ACD5 /* Pods_GitHubU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 342ADFDF0C1018630EC27A09 /* Pods_GitHubU.framework */; };
@@ -81,7 +86,7 @@
 		4387EAEA1E9222F800A9D6B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4387EAEC1E9222F800A9D6B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4387EAF11E9222F800A9D6B5 /* GitHubUTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitHubUTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4387EAF51E9222F800A9D6B5 /* GitHubUTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUTests.swift; sourceTree = "<group>"; };
+		4387EAF51E9222F800A9D6B5 /* UserSearchPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchPresenterTest.swift; sourceTree = "<group>"; };
 		4387EAF71E9222F800A9D6B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4387EAFC1E9222F800A9D6B5 /* GitHubUUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitHubUUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4387EB001E9222F800A9D6B5 /* GitHubUUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUUITests.swift; sourceTree = "<group>"; };
@@ -121,6 +126,11 @@
 		43B56D6B1E92A6AD00EF68B1 /* UserReposView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserReposView.swift; sourceTree = "<group>"; };
 		43B56D6D1E92A6B700EF68B1 /* UserReposPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserReposPresenter.swift; sourceTree = "<group>"; };
 		43B56D6F1E92A6F500EF68B1 /* UserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		43B56D721E92BE0700EF68B1 /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
+		43B56D741E92BE1D00EF68B1 /* UsersRepositoryImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersRepositoryImpl.swift; sourceTree = "<group>"; };
+		43B56D761E92D8CD00EF68B1 /* AdditionalParameterMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalParameterMatcher.swift; sourceTree = "<group>"; };
+		43B56D781E92D92900EF68B1 /* UserReposPresenterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserReposPresenterTest.swift; sourceTree = "<group>"; };
+		43B56D7A1E92D96B00EF68B1 /* ReposRepositoryImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReposRepositoryImpl.swift; sourceTree = "<group>"; };
 		89ACBC36277FC5CA75E685D3 /* Pods-GitHubU.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubU.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubU/Pods-GitHubU.release.xcconfig"; sourceTree = "<group>"; };
 		927DEE52ACFB43D546F4D53F /* Pods-GitHubU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubU.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubU/Pods-GitHubU.debug.xcconfig"; sourceTree = "<group>"; };
 		97EF7DDC87445A2945E389D8 /* Pods_GitHubU_GitHubUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubU_GitHubUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,8 +207,11 @@
 		4387EAF41E9222F800A9D6B5 /* GitHubUTests */ = {
 			isa = PBXGroup;
 			children = (
-				4387EAF51E9222F800A9D6B5 /* GitHubUTests.swift */,
+				43B56D761E92D8CD00EF68B1 /* AdditionalParameterMatcher.swift */,
+				43B56D721E92BE0700EF68B1 /* GeneratedMocks.swift */,
 				4387EAF71E9222F800A9D6B5 /* Info.plist */,
+				43B56D781E92D92900EF68B1 /* UserReposPresenterTest.swift */,
+				4387EAF51E9222F800A9D6B5 /* UserSearchPresenterTest.swift */,
 			);
 			path = GitHubUTests;
 			sourceTree = "<group>";
@@ -298,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				4387EB281E923EA400A9D6B5 /* UsersRepository.swift */,
+				43B56D741E92BE1D00EF68B1 /* UsersRepositoryImpl.swift */,
 			);
 			name = Users;
 			sourceTree = "<group>";
@@ -306,6 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				43B56D611E92788D00EF68B1 /* ReposRepository.swift */,
+				43B56D7A1E92D96B00EF68B1 /* ReposRepositoryImpl.swift */,
 			);
 			name = Repos;
 			sourceTree = "<group>";
@@ -423,6 +438,7 @@
 			buildConfigurationList = 4387EB081E9222F800A9D6B5 /* Build configuration list for PBXNativeTarget "GitHubUTests" */;
 			buildPhases = (
 				6592354068DF3393637E6051 /* [CP] Check Pods Manifest.lock */,
+				43B56D711E92BD6000EF68B1 /* ShellScript */,
 				4387EAED1E9222F800A9D6B5 /* Sources */,
 				4387EAEE1E9222F800A9D6B5 /* Frameworks */,
 				4387EAEF1E9222F800A9D6B5 /* Resources */,
@@ -566,6 +582,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GitHubU-GitHubUTests/Pods-GitHubU-GitHubUTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		43B56D711E92BD6000EF68B1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Define output file. Change \"$PROJECT_DIR/Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"$PROJECT_DIR/GitHubUTests/GeneratedMocks.swift\"\necho \"Generated Mocks File = $OUTPUT_FILE\"\n\n# Define input directory. Change \"$PROJECT_DIR\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"$PROJECT_DIR\"\necho \"Mocks Input Directory = $INPUT_DIR\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n${PODS_ROOT}/Cuckoo/run generate \\\n--testable \"$PROJECT_NAME\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"$INPUT_DIR/GitHubU/UsersRepository.swift\" \\\n\"$INPUT_DIR/GitHubU/ReposRepository.swift\" \\\n\"$INPUT_DIR/GitHubU/UserSearchView.swift\" \\\n\"$INPUT_DIR/GitHubU/UserReposView.swift\" \\\n\"$INPUT_DIR/GitHubU/ComponentProvider.swift\"\n\n# ... and so forth\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.";
+		};
 		54A70ABB75B0F599471AF6C8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -682,10 +711,12 @@
 				43B56D6E1E92A6B700EF68B1 /* UserReposPresenter.swift in Sources */,
 				43B56D5E1E92660900EF68B1 /* CardView.swift in Sources */,
 				43B56D561E925DD300EF68B1 /* UserSearchPresenter.swift in Sources */,
+				43B56D7B1E92D96B00EF68B1 /* ReposRepositoryImpl.swift in Sources */,
 				43B56D621E92788D00EF68B1 /* ReposRepository.swift in Sources */,
 				4387EB291E923EA400A9D6B5 /* UsersRepository.swift in Sources */,
 				43B56D661E928A0E00EF68B1 /* UserInfoViewHeader.swift in Sources */,
 				4387EB401E924A9000A9D6B5 /* ReposApi.swift in Sources */,
+				43B56D751E92BE1D00EF68B1 /* UsersRepositoryImpl.swift in Sources */,
 				4387EB451E924B7800A9D6B5 /* UserSearchResultDto.swift in Sources */,
 				43B56D6A1E9298AF00EF68B1 /* BaseNavigationController.swift in Sources */,
 				4387EB211E923C4600A9D6B5 /* MBProgressHUDExtension.swift in Sources */,
@@ -720,7 +751,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4387EAF61E9222F800A9D6B5 /* GitHubUTests.swift in Sources */,
+				43B56D771E92D8CD00EF68B1 /* AdditionalParameterMatcher.swift in Sources */,
+				4387EAF61E9222F800A9D6B5 /* UserSearchPresenterTest.swift in Sources */,
+				43B56D731E92BE0700EF68B1 /* GeneratedMocks.swift in Sources */,
+				43B56D791E92D92900EF68B1 /* UserReposPresenterTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

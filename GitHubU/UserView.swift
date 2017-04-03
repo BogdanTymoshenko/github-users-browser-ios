@@ -14,6 +14,21 @@ struct UserView {
     let companyAndLocation:String
 }
 
+extension UserView: Hashable {
+    var hashValue: Int {
+        return name.hashValue
+    }
+    
+    static func == (lhs: UserView, rhs: UserView) -> Bool {
+        return lhs.name == rhs.name &&
+            lhs.avatarUrl == rhs.avatarUrl &&
+            lhs.followersCount == rhs.followersCount &&
+            lhs.followingCount == rhs.followingCount &&
+            lhs.companyAndLocation == rhs.companyAndLocation
+    }
+}
+
+
 extension User {
     var companyAndLocation:String {
         var companyAndLocation = ""

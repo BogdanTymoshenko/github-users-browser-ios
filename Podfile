@@ -16,14 +16,14 @@ target 'GitHubU' do
     # UI
     pod 'MBProgressHUD', '~> 1.0.0'
     pod 'DZNEmptyDataSet', '~> 1.8.1'
-    pod 'Whisper', '~> 4.0.0'
 
     target 'GitHubUTests' do
         inherit! :complete
 
         # Pods for testing
         # Mocks
-        pod "Cuckoo"
+        pod 'Cuckoo'
+        pod 'RxTest', '~> 3.2.0'
     end
 
     target 'GitHubUUITests' do

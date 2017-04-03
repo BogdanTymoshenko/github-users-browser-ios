@@ -22,6 +22,18 @@ extension UserShort: ApiResponseDto {
     }
 }
 
+extension UserShort: Hashable {
+    var hashValue: Int {
+        return id.hashValue
+    }
+    
+    static func == (lhs: UserShort, rhs: UserShort) -> Bool {
+        return lhs.id == rhs.id &&
+            lhs.login == rhs.login &&
+            lhs.avatarUrl == rhs.avatarUrl
+    }
+}
+
 
 struct User {
     let id:Int

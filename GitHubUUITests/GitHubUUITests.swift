@@ -28,9 +28,23 @@ class GitHubUUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func test_userSearch_success() {
+        let app = XCUIApplication()
+        
+        // Tap on the search input
+        let searchFieldText = "Type user name/login/email"
+        app.tables.searchFields[searchFieldText].tap()
+        
+        // Type query
+        app.searchFields[searchFieldText].typeText("bogdantym")
+        
+        // Check user found
+        app.tables.cells.containing(.staticText, identifier: "BogdanTymoshenko")
+        
+        // Open user repos
+        app.tables.cells.staticTexts["BogdanTymoshenko"].tap()
+        
+        // Check current project repo shows
+        app.collectionViews.cells.containing(.staticText, identifier: "github-users-browser-ios")
     }
-    
 }

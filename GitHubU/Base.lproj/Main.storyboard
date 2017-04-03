@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Empty Data Set Source-->
+        <!--Search-->
         <scene sceneID="MkM-c2-JR1">
             <objects>
-                <tableViewController title="GitHub Users" id="hjl-n4-TEC" customClass="UserSearchController" customModule="GitHubU" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="GitHub Users" id="hjl-n4-TEC" userLabel="Search" customClass="UserSearchController" customModule="GitHubU" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="ONq-LV-TI7">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -78,11 +78,11 @@
             </objects>
             <point key="canvasLocation" x="1361" y="123"/>
         </scene>
-        <!--Empty Data Set Delegate-->
+        <!--Repos-->
         <scene sceneID="mmq-jA-LFx">
             <objects>
-                <collectionViewController storyboardIdentifier="user_repos" id="Gjj-V8-ssa" customClass="UserReposController" customModule="GitHubU" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="2WH-Pa-dsS">
+                <collectionViewController storyboardIdentifier="user_repos" id="Gjj-V8-ssa" userLabel="Repos" customClass="UserReposController" customModule="GitHubU" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="2WH-Pa-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>

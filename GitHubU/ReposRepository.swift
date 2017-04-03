@@ -11,21 +11,3 @@ import RxSwift
 protocol ReposRepository {
     func repos(forUserLogin login:String) -> Observable<[Repo]>
 }
-
-class ReposRepositoryImpl: BaseRepository, ReposRepository {
-    let reposApi:ReposApi
-    
-    init(apiFactory:ApiFactory) {
-        reposApi = apiFactory.reposApi
-        super.init()
-    }
-    
-    func repos(forUserLogin login:String) -> Observable<[Repo]> {
-        return handleError {
-            reposApi.repos(ofUserWith: login)
-                .map { dto in
-                    dto.toArray()
-                }
-        }
-    }
-}

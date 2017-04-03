@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 import Alamofire
 
 @UIApplicationMain
@@ -53,10 +54,12 @@ class ApiFactoryImpl: ApiFactory {
 class ComponentProviderImpl: ComponentProvider {
     var usersRepository: UsersRepository
     var reposRepository: ReposRepository
+    var mainScheduler: SchedulerType
     
     init(apiFactory:ApiFactory) {
         usersRepository = UsersRepositoryImpl(apiFactory: apiFactory)
         reposRepository = ReposRepositoryImpl(apiFactory: apiFactory)
+        mainScheduler = MainScheduler.instance
     }
 }
 
