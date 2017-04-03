@@ -66,3 +66,16 @@ extension UIApplication {
         return (app.delegate as! AppDelegate).componentProvider
     }
 }
+
+extension UIApplication {
+    func openUrlIfCan(url:URL) {
+        if (canOpenURL(url)) {
+            if #available(iOS 10, *) {
+                open(url, options: [:], completionHandler: nil)
+                
+            } else {
+                _ = openURL(url)
+            }
+        }
+    }
+}

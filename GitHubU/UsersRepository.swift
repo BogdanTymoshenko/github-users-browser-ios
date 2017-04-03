@@ -33,10 +33,10 @@ class UsersRepositoryImpl: BaseRepository, UsersRepository {
     }
     
     func userBy(login:String) -> Observable<User> {
-        return Observable.empty()
+        return handleError {
+            usersApi.user(by: login)
+        }
     }
-    
-    
 }
 
 fileprivate extension String {

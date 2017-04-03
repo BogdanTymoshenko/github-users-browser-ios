@@ -15,3 +15,5 @@
 "common__error__limit_exceeded__try_later" = "Requests limit exceeded, try again later";
 "common__error__limit_exceeded__try_after" = "Requests limit exceeded, try again after %@";
 "common__error__unexpected" = "Unexpected error";
+
+"user_search__title" = "GitHub Users";

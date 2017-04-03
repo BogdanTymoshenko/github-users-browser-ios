@@ -26,11 +26,13 @@ class UserSearchController: UITableViewController, UserSearchView {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationItem.title = NSLocalizedString("user_search__title", comment: "")
         presenter.viewWillAppear()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        navigationItem.title = nil
         presenter.viewWillDisappear()
     }
     

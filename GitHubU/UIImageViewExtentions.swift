@@ -17,7 +17,12 @@ extension UIImageView {
         return loader.download(request, completion: { data in
             switch (data.result) {
             case .success(let image):
-                self.setImage(image, withTransition: .crossDissolve(0.25))
+                if (data.data != nil) /* if loaded, not cached */ {
+                    self.setImage(image, withTransition: .crossDissolve(0.25))
+                }
+                else {
+                    self.image = image
+                }
             case .failure(let error):
                 print("Fail to load image \(error)")
             }

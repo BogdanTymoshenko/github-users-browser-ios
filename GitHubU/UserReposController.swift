@@ -14,6 +14,7 @@ class UserReposController: UICollectionViewController, UICollectionViewDelegateF
     
     var userLogin:String!
     var presenter:UserReposPresenter!
+    var user:UserView? = nil
     var repos = [Repo]()
     var loadingView:MBProgressHUD? = nil
 
@@ -26,6 +27,7 @@ class UserReposController: UICollectionViewController, UICollectionViewDelegateF
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationItem.title = userLogin
         presenter.viewWillAppear()
         
     }
@@ -46,6 +48,18 @@ class UserReposController: UICollectionViewController, UICollectionViewDelegateF
         return repos.count
     }
     
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "user_info_header", for: indexPath) as! UserInfoViewHeader
+        
+        cell.nameLabel.text = user?.name ?? userLogin
+        cell.setAvatarUrl(url: user != nil ? URL(string:user!.avatarUrl) : nil)
+        cell.followersCountLabel.text = user?.followersCount ?? "-"
+        cell.followingCountLabel.text = user?.followingCount ?? "-"
+        cell.companyAndLocationLabel.text = user?.companyAndLocation
+        
+        return cell
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let repo = repos[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "repo_cell", for: indexPath) as! UserRepoViewCell
@@ -60,10 +74,21 @@ class UserReposController: UICollectionViewController, UICollectionViewDelegateF
         
         return cell
     }
+    
+    //
+    // MARK: UICollectionViewDelegate
+    //
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.onRepoSelected(atPosition: indexPath.row)
+    }
    
     //
     // MARK: UICollectionViewDelegateFlowLayout
     //
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: 240)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let repo = repos[indexPath.row]
         return UserRepoViewCell.computeContentSize(collectionViewBounds: collectionView.bounds, repo: repo)
@@ -72,10 +97,21 @@ class UserReposController: UICollectionViewController, UICollectionViewDelegateF
     //
     // MARK: UserReposView
     //
+    func showUser(user:UserView) {
+        self.user = user
+        collectionView?.reloadData()
+    }
+    
     func showRepos(repos:[Repo]) {
         self.repos.removeAll()
         self.repos.append(contentsOf: repos)
         collectionView?.reloadData()
+    }
+    
+    func showRepoView(repo: Repo) {
+        if let repoUrl = URL(string:repo.htmlUrl) {
+            UIApplication.shared.openUrlIfCan(url: repoUrl)
+        }
     }
     
     func showReposLoading() {
@@ -93,8 +129,47 @@ class UserReposController: UICollectionViewController, UICollectionViewDelegateF
     }
 }
 
+struct UserView {
+    let name:String
+    let avatarUrl:String
+    let followersCount:String
+    let followingCount:String
+    let companyAndLocation:String
+}
+
+extension User {
+    var companyAndLocation:String {
+        var companyAndLocation = ""
+        if let company = self.company {
+            companyAndLocation += company
+        }
+        
+        if let location = self.location {
+            if (!companyAndLocation.isEmpty) {
+                companyAndLocation += ",\n"
+            }
+            
+            companyAndLocation += location
+        }
+        
+        return companyAndLocation
+    }
+    
+    func toUserView() -> UserView {
+        return UserView(
+            name: self.name ?? self.login,
+            avatarUrl: self.avatarUrl,
+            followersCount: String(self.followers),
+            followingCount: String(self.following),
+            companyAndLocation: self.companyAndLocation
+        )
+    }
+}
+
 protocol UserReposView {
+    func showUser(user:UserView)
     func showRepos(repos:[Repo])
+    func showRepoView(repo: Repo)
     
     func showReposLoading()
     func dismissReposLoading()
@@ -103,6 +178,7 @@ protocol UserReposView {
 
 class UserReposPresenter {
     let view:UserReposView
+    let usersRepository:UsersRepository
     let reposRepository:ReposRepository
     var userLogin:String!
     
@@ -111,10 +187,27 @@ class UserReposPresenter {
     
     init(view:UserReposView, cp:ComponentProvider) {
         self.view = view
+        self.usersRepository = cp.usersRepository
         self.reposRepository = cp.reposRepository
     }
     
     func viewWillAppear() {
+        usersRepository.userBy(login: userLogin)
+            .map { repos -> User? in repos }
+            .catchError { error in
+                self.view.showError(error: error)
+                return Observable.just(nil)
+            }
+            .filter { $0 != nil }.map { $0! }
+            .subscribe(onNext: { user in
+                self.view.showUser(user: user.toUserView())
+            }, onError: { error in
+                self.view.showError(error: error)
+            })
+            .addDisposableTo(disposeBag)
+
+        
+        
         view.showReposLoading()
         reposRepository.repos(forUserLogin: userLogin)
             .map { repos -> [Repo]? in repos }
@@ -138,5 +231,9 @@ class UserReposPresenter {
     
     func viewWillDisappear() {
         disposeBag = DisposeBag()
+    }
+    
+    func onRepoSelected(atPosition pos: Int) {
+        view.showRepoView(repo: loadedRepos[pos])
     }
 }

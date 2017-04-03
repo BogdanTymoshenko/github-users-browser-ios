@@ -22,7 +22,7 @@ class UsersApiImpl: UsersApi {
     func user(by login:String) -> Observable<User> {
         return client.request(
             method: .get,
-            path: "users/\(login)/repos"
+            path: "users/\(login)"
         )
     }
 }
