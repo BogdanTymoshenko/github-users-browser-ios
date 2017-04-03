@@ -11,6 +11,7 @@ import RxSwift
 class UserSearchPresenter {
     let view:UserSearchView
     let repository:UsersRepository
+    var lastQuery:String = ""
     var loadedUsers = [UserShort]()
     
     private var disposeBag = DisposeBag()
@@ -23,13 +24,17 @@ class UserSearchPresenter {
     func viewWillAppear() {
         view.queryTextChangeEvents
             .map { event in
-                event.query.trim()
+                event.query.trim().lowercased()
             }
             .filter { query in
                 !query.isEmpty
             }
             .debounce(1.250, scheduler: MainScheduler.instance)
-            .do(onNext: { _ in
+            .filter { query in
+                query != self.lastQuery
+            }
+            .do(onNext: { query in
+                self.lastQuery = query
                 self.view.showLoading()
             })
             .flatMap { query in
