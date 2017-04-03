@@ -119,6 +119,33 @@ protocol ApiResponseDto {
     init(json: JSON) throws
 }
 
+class ApiResponseDtoArray<Element:ApiResponseDto>: ApiResponseDto, Sequence {
+    var items = [Element]()
+    
+    required init(json: JSON) throws {
+        for itemJson in json.array ?? [] {
+            let item = try Element(json: itemJson)
+            items.append(item)
+        }
+    }
+    
+    subscript(idx:Int) -> Element {
+        return items[idx]
+    }
+    
+    var count:Int {
+        return items.count
+    }
+    
+    func makeIterator() -> IndexingIterator<Array<Element>> {
+        return items.makeIterator()
+    }
+    
+    func toArray() -> [Element] {
+        return items
+    }
+}
+
 class DummyApiRequestDto: ApiRequestDto {
     func toBodyData() throws -> Data? {
         return nil

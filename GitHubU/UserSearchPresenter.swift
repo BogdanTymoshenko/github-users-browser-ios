@@ -59,4 +59,8 @@ class UserSearchPresenter {
     func viewWillDisappear() {
         disposeBag = DisposeBag()
     }
+    
+    func onUserSelected(atPosition pos: Int) {
+        view.showUserRepos(user: loadedUsers[pos])
+    }
 }

@@ -13,11 +13,16 @@ protocol UsersApi {
 }
 
 class UsersApiImpl: UsersApi {
+    let client:RestApiClient
+    
     init(client:RestApiClient) {
-        
+        self.client = client
     }
     
     func user(by login:String) -> Observable<User> {
-        return Observable.empty()
+        return client.request(
+            method: .get,
+            path: "users/\(login)/repos"
+        )
     }
 }

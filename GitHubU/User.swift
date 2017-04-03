@@ -37,3 +37,20 @@ struct User {
     let publicRepos:Int
     let followers:Int
 }
+
+extension User: ApiResponseDto {
+    init(json: JSON) throws {
+        id = json["id"].intValue
+        login = json["login"].stringValue
+        name = json["name"].string
+        avatarUrl = json["avatar_url"].stringValue
+        company = json["company"].string
+        location = json["location"].string
+        bio = json["bio"].string
+        email = json["email"].string
+        blog = json["blog"].string
+        following = json["following"].intValue
+        publicRepos = json["public_repos"].intValue
+        followers = json["followers"].intValue
+    }
+}

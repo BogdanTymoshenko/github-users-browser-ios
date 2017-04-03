@@ -38,6 +38,11 @@
 		43B56D541E925DC800EF68B1 /* UserSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B56D531E925DC800EF68B1 /* UserSearchView.swift */; };
 		43B56D561E925DD300EF68B1 /* UserSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B56D551E925DD300EF68B1 /* UserSearchPresenter.swift */; };
 		43B56D581E925E6D00EF68B1 /* UIAlertControllerExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B56D571E925E6D00EF68B1 /* UIAlertControllerExtentions.swift */; };
+		43B56D5B1E92653900EF68B1 /* UserReposController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B56D5A1E92653900EF68B1 /* UserReposController.swift */; };
+		43B56D5E1E92660900EF68B1 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B56D5D1E92660900EF68B1 /* CardView.swift */; };
+		43B56D601E9266FD00EF68B1 /* UserRepoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B56D5F1E9266FD00EF68B1 /* UserRepoViewCell.swift */; };
+		43B56D621E92788D00EF68B1 /* ReposRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B56D611E92788D00EF68B1 /* ReposRepository.swift */; };
+		43B56D641E92843800EF68B1 /* UIViewControllerExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B56D631E92843800EF68B1 /* UIViewControllerExtentions.swift */; };
 		5E8E96DBA0771851D80A5318 /* Pods_GitHubU_GitHubUTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EF7DDC87445A2945E389D8 /* Pods_GitHubU_GitHubUTests.framework */; };
 		7104D77DA050647CB46E10BF /* Pods_GitHubUUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D505DA4033D7DE6601BD8A4A /* Pods_GitHubUUITests.framework */; };
 		9DDD4343FE46B6D12A44ACD5 /* Pods_GitHubU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 342ADFDF0C1018630EC27A09 /* Pods_GitHubU.framework */; };
@@ -101,6 +106,11 @@
 		43B56D531E925DC800EF68B1 /* UserSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchView.swift; sourceTree = "<group>"; };
 		43B56D551E925DD300EF68B1 /* UserSearchPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchPresenter.swift; sourceTree = "<group>"; };
 		43B56D571E925E6D00EF68B1 /* UIAlertControllerExtentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtentions.swift; sourceTree = "<group>"; };
+		43B56D5A1E92653900EF68B1 /* UserReposController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserReposController.swift; sourceTree = "<group>"; };
+		43B56D5D1E92660900EF68B1 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		43B56D5F1E9266FD00EF68B1 /* UserRepoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepoViewCell.swift; sourceTree = "<group>"; };
+		43B56D611E92788D00EF68B1 /* ReposRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReposRepository.swift; sourceTree = "<group>"; };
+		43B56D631E92843800EF68B1 /* UIViewControllerExtentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtentions.swift; sourceTree = "<group>"; };
 		89ACBC36277FC5CA75E685D3 /* Pods-GitHubU.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubU.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubU/Pods-GitHubU.release.xcconfig"; sourceTree = "<group>"; };
 		927DEE52ACFB43D546F4D53F /* Pods-GitHubU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubU.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubU/Pods-GitHubU.debug.xcconfig"; sourceTree = "<group>"; };
 		97EF7DDC87445A2945E389D8 /* Pods_GitHubU_GitHubUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubU_GitHubUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,8 +208,10 @@
 				4387EB181E92348400A9D6B5 /* Extentions */,
 				4387EAE91E9222F800A9D6B5 /* LaunchScreen.storyboard */,
 				4387EAE41E9222F800A9D6B5 /* Main.storyboard */,
+				43B56D591E92651800EF68B1 /* Repos */,
 				4387EB0F1E922AC700A9D6B5 /* Search */,
 				4387EB221E923C5A00A9D6B5 /* Strings */,
+				43B56D5C1E9265ED00EF68B1 /* Views */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -236,10 +248,11 @@
 		4387EB181E92348400A9D6B5 /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
-				4387EB1B1E9234C700A9D6B5 /* UIImageViewExtentions.swift */,
-				4387EB191E92349E00A9D6B5 /* UIViewExtentions.swift */,
 				4387EB201E923C4600A9D6B5 /* MBProgressHUDExtension.swift */,
 				43B56D571E925E6D00EF68B1 /* UIAlertControllerExtentions.swift */,
+				4387EB1B1E9234C700A9D6B5 /* UIImageViewExtentions.swift */,
+				43B56D631E92843800EF68B1 /* UIViewControllerExtentions.swift */,
+				4387EB191E92349E00A9D6B5 /* UIViewExtentions.swift */,
 			);
 			name = Extentions;
 			sourceTree = "<group>";
@@ -281,6 +294,7 @@
 		4387EB271E923E9300A9D6B5 /* Repos */ = {
 			isa = PBXGroup;
 			children = (
+				43B56D611E92788D00EF68B1 /* ReposRepository.swift */,
 			);
 			name = Repos;
 			sourceTree = "<group>";
@@ -324,6 +338,23 @@
 				4387EB441E924B7800A9D6B5 /* UserSearchResultDto.swift */,
 			);
 			name = Dto;
+			sourceTree = "<group>";
+		};
+		43B56D591E92651800EF68B1 /* Repos */ = {
+			isa = PBXGroup;
+			children = (
+				43B56D5A1E92653900EF68B1 /* UserReposController.swift */,
+				43B56D5F1E9266FD00EF68B1 /* UserRepoViewCell.swift */,
+			);
+			name = Repos;
+			sourceTree = "<group>";
+		};
+		43B56D5C1E9265ED00EF68B1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				43B56D5D1E92660900EF68B1 /* CardView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		A2279C057F359B78B36E4DF5 /* Pods */ = {
@@ -426,6 +457,7 @@
 				TargetAttributes = {
 					4387EADC1E9222F800A9D6B5 = {
 						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = 83ERWMLM64;
 						ProvisioningStyle = Automatic;
 					};
 					4387EAF01E9222F800A9D6B5 = {
@@ -632,7 +664,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4387EB151E922D3D00A9D6B5 /* User.swift in Sources */,
+				43B56D5E1E92660900EF68B1 /* CardView.swift in Sources */,
 				43B56D561E925DD300EF68B1 /* UserSearchPresenter.swift in Sources */,
+				43B56D621E92788D00EF68B1 /* ReposRepository.swift in Sources */,
 				4387EB291E923EA400A9D6B5 /* UsersRepository.swift in Sources */,
 				4387EB401E924A9000A9D6B5 /* ReposApi.swift in Sources */,
 				4387EB451E924B7800A9D6B5 /* UserSearchResultDto.swift in Sources */,
@@ -643,12 +677,15 @@
 				4387EB471E924DD300A9D6B5 /* ApiFactory.swift in Sources */,
 				4387EB381E9249BA00A9D6B5 /* RxAlamofire.swift in Sources */,
 				4387EB3C1E924A2500A9D6B5 /* UsersApi.swift in Sources */,
+				43B56D601E9266FD00EF68B1 /* UserRepoViewCell.swift in Sources */,
 				4387EB351E9248AF00A9D6B5 /* RxAlamofireExtensions.swift in Sources */,
 				43B56D581E925E6D00EF68B1 /* UIAlertControllerExtentions.swift in Sources */,
 				4387EB1C1E9234C700A9D6B5 /* UIImageViewExtentions.swift in Sources */,
 				4387EB1A1E92349E00A9D6B5 /* UIViewExtentions.swift in Sources */,
 				4387EB311E9247BE00A9D6B5 /* URLRequestExtention.swift in Sources */,
+				43B56D641E92843800EF68B1 /* UIViewControllerExtentions.swift in Sources */,
 				4387EB2B1E923FD000A9D6B5 /* ComponentProvider.swift in Sources */,
+				43B56D5B1E92653900EF68B1 /* UserReposController.swift in Sources */,
 				4387EB2F1E92474800A9D6B5 /* RestApiClient.swift in Sources */,
 				4387EB331E92480D00A9D6B5 /* RequestError.swift in Sources */,
 				4387EB111E922AE800A9D6B5 /* UserSearchController.swift in Sources */,
@@ -810,6 +847,7 @@
 			baseConfigurationReference = 927DEE52ACFB43D546F4D53F /* Pods-GitHubU.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 83ERWMLM64;
 				INFOPLIST_FILE = GitHubU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.amicablesoft.ghusersbrowser.ios;
@@ -823,6 +861,7 @@
 			baseConfigurationReference = 89ACBC36277FC5CA75E685D3 /* Pods-GitHubU.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 83ERWMLM64;
 				INFOPLIST_FILE = GitHubU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.amicablesoft.ghusersbrowser.ios;

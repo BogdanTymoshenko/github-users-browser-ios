@@ -52,9 +52,11 @@ class ApiFactoryImpl: ApiFactory {
 
 class ComponentProviderImpl: ComponentProvider {
     var usersRepository: UsersRepository
+    var reposRepository: ReposRepository
     
     init(apiFactory:ApiFactory) {
         usersRepository = UsersRepositoryImpl(apiFactory: apiFactory)
+        reposRepository = ReposRepositoryImpl(apiFactory: apiFactory)
     }
 }
 

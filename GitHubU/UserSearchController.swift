@@ -53,6 +53,13 @@ class UserSearchController: UITableViewController, UserSearchView {
         return cell
     }
     
+    //
+    // MARK: UITableViewDelegate
+    //
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.onUserSelected(atPosition: indexPath.row)
+    }
+    
     
     //
     // MARK: UIScrollViewDelegate
@@ -77,7 +84,10 @@ class UserSearchController: UITableViewController, UserSearchView {
     }
     
     func showUserRepos(user:UserShort) {
-        // TODO
+        if let userReposController = storyboard?.instantiateViewController(withIdentifier: "user_repos") as? UserReposController {
+            userReposController.userLogin = user.login
+            navigationController?.pushViewController(userReposController, animated: true)
+        }
     }
     
     func showLoading() {
@@ -91,29 +101,6 @@ class UserSearchController: UITableViewController, UserSearchView {
     }
     
     func showError(error: Error) {
-        if let serviceError = error as? CommonServiceError {
-            switch serviceError {
-            case .connectionMissing:
-                UIAlertController.showError(in: self, message: "common__error__connection_problem")
-            case .limitExceeded(let until):
-                if let until = until {
-                    let timeFormatter = DateFormatter()
-                    timeFormatter.timeStyle = DateFormatter.Style.short
-                    let untilDate = timeFormatter.string(from: until)
-                    let message = String(format:NSLocalizedString("common__error__limit_exceeded__try_after", comment: ""), untilDate)
-                    UIAlertController.showError(
-                        in: self,
-                        localizedTitle: NSLocalizedString("common__title__error", comment: ""),
-                        localizedMessage: message
-                    )
-                }
-                else {
-                    UIAlertController.showError(in: self, message: "common__error__limit_exceeded__try_later")
-                }
-            }
-        }
-        else {
-            UIAlertController.showError(in: self, message: "common__error__unexpected")
-        }
+        showErrorCommonDialog(error: error)
     }
 }

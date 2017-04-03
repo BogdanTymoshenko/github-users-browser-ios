@@ -9,15 +9,20 @@
 import RxSwift
 
 protocol ReposApi {
-    func repos(ofUserWith login:String) -> Observable<[Repo]>
+    func repos(ofUserWith login:String) -> Observable<ApiResponseDtoArray<Repo>>
 }
 
 class ReposApiImpl: ReposApi {
+    let client:RestApiClient
+    
     init(client:RestApiClient) {
-        
+        self.client = client
     }
     
-    func repos(ofUserWith login:String) -> Observable<[Repo]> {
-        return Observable.empty()
+    func repos(ofUserWith login:String) -> Observable<ApiResponseDtoArray<Repo>> {
+        return client.request(
+            method: .get,
+            path: "users/\(login)/repos"
+        )
     }
 }

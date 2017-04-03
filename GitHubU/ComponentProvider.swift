@@ -8,4 +8,5 @@
 
 protocol ComponentProvider {
     var usersRepository:UsersRepository { get }
+    var reposRepository:ReposRepository { get }
 }
