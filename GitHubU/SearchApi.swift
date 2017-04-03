@@ -21,11 +21,13 @@ class SearchApiImpl: SearchApi {
     }
     
     func users(query: String, type: String) -> Observable<UserSearchResultDto> {
+        let urlEncodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? query
+        
         return client.request(
             method: .get,
             path: "search/users",
             queryParams:[
-                "q": UnencodableString(value:query),
+                "q": UnencodableString(value:urlEncodedQuery),
                 "type": type
             ]
         )
