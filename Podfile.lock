@@ -1,0 +1,38 @@
+PODS:
+  - Alamofire (4.4.0)
+  - AlamofireImage (3.2.0):
+    - Alamofire (~> 4.1)
+  - Cuckoo (0.8.3)
+  - DZNEmptyDataSet (1.8.1)
+  - MBProgressHUD (1.0.0)
+  - RxCocoa (3.2.0):
+    - RxSwift (~> 3.1)
+  - RxSwift (3.2.0)
+  - SwiftyJSON (3.1.4)
+  - Whisper (4.0.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.3)
+  - AlamofireImage (~> 3.2.0)
+  - Cuckoo
+  - DZNEmptyDataSet (~> 1.8.1)
+  - MBProgressHUD (~> 1.0.0)
+  - RxCocoa (~> 3.2.0)
+  - RxSwift (~> 3.2.0)
+  - SwiftyJSON (~> 3.1.4)
+  - Whisper (~> 4.0.0)
+
+SPEC CHECKSUMS:
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
+  Cuckoo: 2daf5d23383c0a24cd60b73287a5813af4793add
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  RxCocoa: ccdf43101a70407097a29082f648ba1676075b30
+  RxSwift: 46574f70d416b7923c237195939cc488a7fbf3a0
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  Whisper: '08be92623311f8e53201e62e17f6d7b9599a4714'
+
+PODFILE CHECKSUM: 6c33686ac66d015070205009a491187c19de04c7
+
+COCOAPODS: 1.2.0
